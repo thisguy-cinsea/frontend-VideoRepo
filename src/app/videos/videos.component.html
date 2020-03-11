@@ -3,7 +3,6 @@
         <mat-spinner *ngIf="videos.length === 0"></mat-spinner>
         <mat-card-header>
             <mat-card-title>{{video.videoDescription}}</mat-card-title>
-            <mat-card-title>{{video.videoId}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <iframe width="532" height="299" [src]="video.safeURL" frameborder="0"

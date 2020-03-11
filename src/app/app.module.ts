@@ -10,12 +10,14 @@ import { LoginComponent } from './login/login.component';
 import { VideosComponent } from './videos/videos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { VideoFormComponent } from './video-form/video-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    VideosComponent
+    VideosComponent,
+    VideoFormComponent
   ],
   imports: [
     BrowserModule,
