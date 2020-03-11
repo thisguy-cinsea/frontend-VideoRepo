@@ -6,7 +6,7 @@ export class Video {
 
     public videoLink: string;
     private videoDescription: string;
-    private videoId?: Number;
+    public videoId?: number;
 
     constructor(private _sanitizer: DomSanitizer) {
         this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.getVideoLink());
@@ -32,11 +32,11 @@ export class Video {
         return this.videoDescription;
     }
 
-    public setVideoId(videoId: Number) {
+    public setVideoId(videoId: number) {
         this.videoId = videoId;
     }
 
-    public getVideoId(): Number {
+    public getVideoId(): number {
         return this.videoId;
     }
 
