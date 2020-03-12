@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Video Repo';
-  login = true;
+  signedIn = true;
+
+  constructor(private router: Router){}
+  
+  logout() {
+    this.signedIn = false;
+    this.router.navigate(["/logout"]);
+  }
 }

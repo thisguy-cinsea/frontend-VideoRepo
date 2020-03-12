@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../model/video';
 import { VideoService } from '../service/video.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { VideoService } from '../service/video.service';
 export class VideoFormComponent implements OnInit {
   video: Video = new Video();
 
-  constructor(private videoService: VideoService) { }
+  constructor(private videoService: VideoService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -31,5 +32,6 @@ export class VideoFormComponent implements OnInit {
     }
     this.videoService.addVideo(this.video)
       .subscribe(v => console.log());
+      this.router.navigate(["/videos"]);
   }
 }

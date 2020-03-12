@@ -64,8 +64,7 @@ addVideo (video: Video): Observable<Video> {
   const url = this.BASE_URL+"/";
   return this.httpClient.post<Video>(url, video, this.httpOptions).pipe(
     tap((newVideo: Video) => console.log(`added video w/ id=${newVideo.videoId}`)),
-    catchError(this.handleError)
-  );
+    catchError(this.handleError));
 }
 
   constructor(private httpClient: HttpClient){}
