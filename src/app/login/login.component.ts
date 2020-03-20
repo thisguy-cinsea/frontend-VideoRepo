@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { User } from '../model/user';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,13 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
   user = new User();
-  signIn = false;
+  signIn = true;
   object;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    console.log("onInit.signIn", this.signIn);
   }
 
   loginUser(username: string, password: string) {
@@ -29,6 +30,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  registerUser(username: string, password: string) {
+    this.user.userName = username;
+    this.user.password = password;
+    this.userService.addUser(this.user)
+    .subscribe(result => {
+      this.object = result;
+      this.signIn = true;
+      // this.checkStatus();
+    });
+  }
+
   checkStatus() {
     if (this.object != null) {
       this.signIn = true;
@@ -37,4 +49,18 @@ export class LoginComponent implements OnInit {
       this.signIn = false;
     }
   }
+
+  changeForm() {
+    console.log("changeForm.signIn.before", this.signIn);
+
+    if (this.signIn)
+      this.signIn = false;
+    else
+      this.signIn = true;
+    console.log("changeForm.signIn.after", this.signIn);
+    // console.log(waits(4));
+
+    // this.router.navigate(["'/login', '"+this.signIn+"'"]);
+  }
+
 }

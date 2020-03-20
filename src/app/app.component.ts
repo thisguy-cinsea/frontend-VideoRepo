@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Video Repo';
-  signedIn = true;
+  signedIn = false;
 
   constructor(private router: Router){}
   

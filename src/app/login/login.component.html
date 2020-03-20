@@ -1,6 +1,7 @@
-<div class="login-form" [hidden]="signIn">
+<div class="login-form">
     <form>
-        <h2 class="text-center">Log in</h2>
+        <h2 class="text-center" [hidden]="!signIn">Log in</h2>
+        <h2 class="text-center" [hidden]="signIn">Register</h2>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required="required" #username>
         </div>
@@ -8,8 +9,11 @@
             <input type="password" class="form-control" placeholder="Password" required="required" #password>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" (click)="loginUser(username.value, password.value); username.value = '';password.value = '';">Log in</button>
+            <button type="submit" class="btn btn-primary btn-block" [hidden]="!signIn" (click)="loginUser(username.value, password.value); username.value = '';password.value = '';">Log in</button>
+            <button type="submit" class="btn btn-primary btn-block" [hidden]="signIn" (click)="registerUser(username.value, password.value); username.value = '';password.value = '';">Register</button>
         </div>
     </form>
-    <p class="text-center"><a href="#">Create an Account</a></p>
+    <p class="text-center"><a
+      
+        (click)="changeForm()">Create an Account</a></p>
 </div>

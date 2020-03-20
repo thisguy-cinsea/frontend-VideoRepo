@@ -18,7 +18,8 @@ export class UserService {
   }
 
   addUser(addedUser: User) {
-    throw new Error("Method not implemented.");
+    const url = this.BASE_URL + "/";
+    return this.httpClient.post(url, addedUser).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse){
